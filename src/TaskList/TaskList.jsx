@@ -20,6 +20,8 @@ function Task({ todo, onEdit, onDelete }) {
   const [text, setText] = useState(todo.title);
   const [isExpanded, setisExpended] = useState(false);
 
+
+  //setting content on the basis of editing or save
   if (isEditing) {
     content = (
       <>
@@ -54,11 +56,13 @@ function Task({ todo, onEdit, onDelete }) {
         <div style={{display:"inline"}}  onClick={() => {
           setisExpended(!isExpanded);
         }}>
+
         {content}
 
         {isExpanded && (
           <div className="small-text">Last Edited: {todo.lastEdited}</div>
         )}
+
         </div>
       </div>
 
@@ -92,7 +96,6 @@ function Task({ todo, onEdit, onDelete }) {
           Delete
         </button>
       </div>
-      {/* </div> */}
     </> 
   );
 }

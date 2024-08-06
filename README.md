@@ -1,10 +1,9 @@
-Sure! Adding emojis and interactive stickers can make your README more engaging and visually appealing. Here’s a revised version of your README with added emojis and a more stylish touch:
 
 ---
 
 # Todo App 📝
 
-![Todo App Screenshot](./path-to-screenshot.png)  
+
 _A sleek and modern Todo App built with React and Vite._
 
 ## 🚀 Overview
@@ -24,6 +23,10 @@ Welcome to the **Todo App**! This application is designed to help you manage you
 
 - **Frontend**: React, Vite
 - **Styling**: CSS (custom)
+
+## Rendering Flow 
+
+![render Diagram](RenderStructure.png)
 
 ## 📥 Getting Started
 
@@ -60,7 +63,7 @@ Ensure you have **Node.js** and **npm** installed on your machine.
    ```
 
 2. **Open the App**  
-   Open your browser and go to [http://localhost:3000](http://localhost:5173) to view the app.
+   Open your browser and go to [http://localhost:5173](http://localhost:5173) to view the app.
 
 ### ⚙️ Building for Production
 

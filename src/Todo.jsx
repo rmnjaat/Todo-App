@@ -1,48 +1,22 @@
 import { useMemo, useReducer, useState } from "react";
-import TaskList from "./TaskList";
-import AddTask from "./AddTask";
+import TaskList from "./TaskList/TaskList";
+import AddTask from "./AddTask/AddTask";
 import Search from "./Search/Search";
-import "./todo.css"
+import "./Style/todo.css";
+import reducerFn from "./Utils/Reducerfn";
 
 import { debounce } from "lodash";
 function Todo() {
-  // const [Todos, setTodos] = useState(iniTodos);
   const [Todos, dispatch] = useReducer(reducerFn, iniTodos);
   const [searchText, setSearchText] = useState("");
 
   function handleAdd(text) {
-    // setTodos([
-    //   ...Todos,
-    //   {
-    //     id: crypto.randomUUID(),
-    //     title: text,
-    //     isCompleted: false,
-    //     lastEdited: new Date().toLocaleString(),
-    //   },
-    // ]);
-
     dispatch({ type: "add", id: crypto.randomUUID(), title: text });
   }
 
-  function handleCheck(task) {
-    dispatch({
-      type: "checked",
-      task: task,
-    });
-  }
+  //Defining Handlers
 
   function handleEdit(task) {
-    // console.log(task, "Task printd");
-    // setTodos(
-    //   Todos.map((todo) => {
-    //     if (todo.id != task.id) {
-    //       return todo;
-    //     } else {
-    //       return task;
-    //     }
-    //   })
-    // );x
-
     dispatch({
       type: "edit",
       task: task,
@@ -50,8 +24,6 @@ function Todo() {
   }
 
   function handleDelete(id) {
-    // setTodos(Todos.filter((todo) => todo.id != id));
-
     dispatch({ type: "delete", id: id });
   }
 
@@ -67,51 +39,10 @@ function Todo() {
   const filteredTodos = Todos.filter((todo) =>
     todo.title.toLowerCase().includes(searchText.toLowerCase())
   );
-
-  function reducerFn(todos, action) {
-    switch (action.type) {
-      case "add": {
-        return [
-          ...todos,
-          {
-            id: action.id,
-            title: action.title,
-            isCompleted: false,
-            lastEdited: new Date().toLocaleString(),
-          },
-        ];
-      }
-
-      case "edit": {
-        return todos.map((todo) => {
-          if (todo.id != action.task.id) {
-            return todo;
-          } else {
-            return action.task;
-          }
-        });
-      }
-
-      case "delete": {
-        return todos.filter((todo) => todo.id != action.id);
-      }
-
-      case "checked": {
-        return todos.map((todo) => {
-          if (todo.id != action.task.id) {
-            return todo;
-          } else {
-            return action.task;
-          }
-        });
-      }
-    }
-  }
-
-  console.log(Todos);
+  
+  // returning component
   return (
     <div className="container">
-      
       <AddTask handleAdd={handleAdd}></AddTask>
       <h2 className="heading2 ">Your Tasks</h2>
 
@@ -128,4 +59,20 @@ function Todo() {
 
 export default Todo;
 
-const iniTodos = [];
+
+
+//Just for initial values
+const iniTodos = [
+  {
+    id: "7129e0ec-75cf-427f-8ceb-3e5ba62a5999",
+    title: "Bring Milk",
+    isCompleted: true,
+    lastEdited: new Date().toLocaleString()
+  },
+  {
+    id: "7129e0ec-75cf-427f-8ceb-3e5ba62a59s9",
+    title: "Make Tea",
+    isCompleted: false,
+    lastEdited: new Date().toLocaleString()
+  },
+];

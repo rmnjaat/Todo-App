@@ -1,5 +1,5 @@
 import Todo from "./Todo"
-import "./app.css"
+import "./Style/app.css"
 
 
 function App() {
